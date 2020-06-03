@@ -3,7 +3,6 @@ let canvas = document.getElementById("canvas");
 let cx = canvas.getContext("2d");
 
 //Init Array Size and Sort Speed
-let cntText = document.getElementById("sizeText");
 let cntSlider = document.getElementById("size");
 let cnt = cntSlider.value;
 
@@ -119,9 +118,6 @@ shuffleButton.addEventListener("click", function ()  {
 
 //Sorts
 async function selectionSort(arr)    {
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     for (let i = 0; i < arr.length; i++)    {
         minInd = arr.slice(i).indexOf(Math.min(...arr.slice(i)))+i;
         let curr = arr[minInd];
@@ -135,15 +131,9 @@ async function selectionSort(arr)    {
     }
 
     display("green", arr);
-
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function bubbleSort(arr)  {
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     for (let i = 0; i < arr.length; i++)    {
         for (let j = 1; j < arr.length-i; j++)  {
             highlight("red", arr, arr[j], arr[j-1]);
@@ -160,15 +150,9 @@ async function bubbleSort(arr)  {
     }
 
     display("green", arr);
-
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function insertionSort(arr)  {
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     for (let i = 1; i < arr.length; i++)    {
         let j = i-1;
         let curr = arr[i];
@@ -183,9 +167,6 @@ async function insertionSort(arr)  {
     }
 
     display("green", arr);
-
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function heapSort(arr)  {
@@ -211,9 +192,6 @@ async function heapSort(arr)  {
         }
     }
 
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     let n = arr.length;
     for (let i=~~(n/2)-1; i >= 0; i--)  {
         heapify(arr, n, i);
@@ -234,9 +212,6 @@ async function heapSort(arr)  {
     }
 
     display("green", arr)
-
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function quickSort(arr)  {
@@ -274,16 +249,10 @@ async function quickSort(arr)  {
             await helper(arr, pi+1, hi);
         }
     }
-    
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
 
     await helper(arr, 0, arr.length-1);
 
     display("green", arr);
-
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function mergeSort(arr)  {
@@ -335,14 +304,8 @@ async function mergeSort(arr)  {
         await sleep(speed);
     }
 
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     await helper(arr);
     display("green", arr);
-    
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function bucketSort(arr)  {
@@ -362,9 +325,6 @@ async function bucketSort(arr)  {
         }
         return arr;
     }
-
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
 
     let buckets = [[],[],[],[]];
 
@@ -393,9 +353,6 @@ async function bucketSort(arr)  {
     }
 
     display("green", arr);
-
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function radixSort(arr)  {
@@ -436,9 +393,6 @@ async function radixSort(arr)  {
         return arr;
     }
 
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     let maxNum = Math.max(...arr);
     let exp = 1;
     while (maxNum / exp > 0 && iter < 4)    {
@@ -449,15 +403,9 @@ async function radixSort(arr)  {
     }
 
     display("green", arr);
-    
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 async function countingSort(arr)  {
-    cntSlider.style.visibility = "hidden";
-    shuffleButton.disabled = true;
-
     let temp = arr.slice();
     let cnt = new Array(600).fill(0);
     for (let i=0; i < arr.length; i++)    {
@@ -481,9 +429,6 @@ async function countingSort(arr)  {
     }
 
     display("green", arr);
-    
-    cntSlider.style.visibility = "visible";
-    shuffleButton.disabled = false;
 }
 
 //Toggle Sorts
@@ -568,6 +513,8 @@ document.getElementById("countingSort").addEventListener("click", function ()  {
 let startButton = document.getElementById("start");
 startButton.addEventListener("click", async function ()  {
     startButton.disabled = true;
+    shuffleButton.disabled = true;
+    cntSlider.disabled = true;
 
     if (name.innerHTML === "Selection Sort!") {
         await selectionSort(arr);
@@ -590,4 +537,6 @@ startButton.addEventListener("click", async function ()  {
     }
 
     startButton.disabled = false;
+    shuffleButton.disabled = false;
+    cntSlider.disabled = false;
 });
