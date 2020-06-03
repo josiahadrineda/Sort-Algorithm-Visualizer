@@ -1,0 +1,116 @@
+body    {
+    background-color: rgb(203, 235, 255);
+}
+
+h1 {
+    text-align: center;
+    color: rgb(31, 134, 134);
+    font-size: 60px;
+}
+
+.settings   {
+    background-color: rgb(31, 134, 134);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: 3px solid;
+}
+
+.button {
+    background-color: rgb(118, 145, 221);
+    color: white;
+    padding: 16px;
+    margin-right: 70px;
+    font-size: 16px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.button:hover    {
+    background-color: rgb(152, 135, 250);
+}
+
+#search {
+    box-sizing: border-box;
+    background-image: url('./images/searchicon.png');
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#search:focus   {
+    outline: 2px solid grey;
+}
+
+.dropdown   {
+    position: relative;
+    display: inline-block;
+}
+
+.dropContents   {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid grey;
+    z-index: 1;
+}
+
+.dropContents button    {
+    color: black;
+    padding: 8px 100px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropContents button:hover  {
+    background-color: lightgrey;
+}
+
+.show   {
+    display: block;
+}
+
+.size, .speed, #operationsText   {
+    display: inline-block;
+    float: right;
+    background-color: rgb(77, 155, 179);
+    color: white;
+    padding: 15px;
+    margin-left: 40px;
+    font-size: 18px;
+    border: 1px solid;
+}
+
+.text   {
+    position: relative;
+    bottom: 1px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    background-color:rgb(203, 247, 255);
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: rgb(52, 52, 255);
+    cursor: pointer;
+}
+
+.slider:hover   {
+    opacity: 1;
+    background-color: rgb(168, 239, 252);
+    cursor: pointer;
+}
+
+.sauce  {
+    text-align: center;
+}
